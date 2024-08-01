@@ -12,5 +12,7 @@ public interface signupservice {
     List<signupdto> getAllUsers();
     
     signupdto updateUser(Long userId, signupdto updatedUser);
+    
+    void deleteUser(Long userId);
 
 }

@@ -57,5 +57,15 @@ public class signupserviceimpl implements signupservice {
 
         return signupmapper.mapToUserDto(updatedUserObj);
     }
+    
+    @Override
+    public void deleteUser(Long userId) {
+
+        signupentity user = userRepository.findById(userId).orElseThrow(
+                () -> new ResourceNotFoundException("User is not exists with given id: " + userId)
+        );
+
+        userRepository.deleteById(userId);
+    }
    
 }

@@ -38,11 +38,18 @@ public class signupcontroller {
         return ResponseEntity.ok(users);
     }
     
-    // Build Update Employee REST API
+    // Build Update users REST API
     @PutMapping("{id}")
     public ResponseEntity<signupdto> updateUser(@PathVariable("id") Long userId,@RequestBody signupdto updatedUser){
           signupdto userDto = userService.updateUser(userId, updatedUser);
           return ResponseEntity.ok(userDto);
+    }
+    
+    // Build Delete user REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Long userId){
+        userService.deleteUser(userId);
+        return ResponseEntity.ok("Employee deleted successfully!.");
     }
 
 }
