@@ -37,5 +37,12 @@ public class signupcontroller {
         List<signupdto> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
+    
+    // Build Update Employee REST API
+    @PutMapping("{id}")
+    public ResponseEntity<signupdto> updateUser(@PathVariable("id") Long userId,@RequestBody signupdto updatedUser){
+          signupdto userDto = userService.updateUser(userId, updatedUser);
+          return ResponseEntity.ok(userDto);
+    }
 
 }
