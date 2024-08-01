@@ -24,5 +24,18 @@ public class signupcontroller {
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
-    
+   // Build Get user REST API
+    @GetMapping("{id}")
+    public ResponseEntity<signupdto> getUserById(@PathVariable("id") Long userId){
+        signupdto userDto = userService.getUserById(userId);
+        return ResponseEntity.ok(userDto);
+    }
+
+    // Build Get All users REST API
+    @GetMapping
+    public ResponseEntity<List<signupdto>> getAllUsers(){
+        List<signupdto> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+
 }

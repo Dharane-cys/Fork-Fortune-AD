@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface signupservice {
     signupdto createUser(signupdto userDto);
+    
+    signupdto getUserById(Long userId);
+
+    List<signupdto> getAllUsers();
 
 }

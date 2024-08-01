@@ -25,6 +25,21 @@ public class signupserviceimpl implements signupservice {
         signupentity savedUser = userRepository.save(user);
         return signupmapper.mapToUserDto(savedUser);
     }
+    
+    @Override
+    public signupdto getUserById(Long userId) {
+        signupentity user = userRepository.findById(userId)
+                .orElseThrow(() ->
+                new ResourceNotFoundException("User not exists with given id : " + userId));
 
+        return signupmapper.mapToUserDto(user);
+    }
+
+    @Override
+    public List<signupdto> getAllUsers() {
+        List<signupentity> users = userRepository.findAll();
+        return users.stream().map((user) -> signupmapper.mapToUserDto(user))
+                .collect(Collectors.toList());
+    }
    
 }
